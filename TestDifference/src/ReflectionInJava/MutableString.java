@@ -1,0 +1,46 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ReflectionInJava;
+
+/**
+ *
+ * @author Manjeet Singh
+ */
+import java.lang.reflect.Field; 
+
+public class MutableString {
+
+    public static void main(String[] args) { 
+        String s = "Immutable"; 
+        String t = "Notreally"; 
+
+        mutate(s, t);
+        System.out.println(t);
+
+        // strings are interned so this doesn't even print "Immutable" (!)
+        System.out.println("Immutable");
+        
+    } 
+
+    // change the first min(|s|, |t|) characters of s to t
+    public static void mutate(String s, String t) {
+        try {
+            Field val = String.class.getDeclaredField("value"); 
+            Field off = String.class.getDeclaredField("offset"); 
+//            System.out.println("value="+val+"\noffset="+off);
+//            System.out.println("val.getName(): "+val.getName()+"\nval.toGenericString(): "+val.toGenericString()+""
+//                    + "\nval.getModifiers(): "+val.getModifiers()+"\nval.getType(): "+val.getType()+"\nval.isSynthetic(): "+val.isSynthetic()+""
+//                    + "\nval.isEnumConstant(): "+val.isEnumConstant());
+            val.setAccessible(true); 
+            off.setAccessible(true); 
+            int offset   = off.getInt(s); 
+            char[] value = (char[]) val.get(s); 
+            for (int i = 0; i < Math.min(s.length(), t.length()); i++)
+                value[offset + i] = t.charAt(i); 
+        } 
+        catch (Exception e) { e.printStackTrace(); }
+    } 
+
+}

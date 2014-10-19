@@ -1,0 +1,23 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ArrayList;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author Manjeet Singh
+ */
+public class RemoveFromArrayList {
+        public static void main(String[] args)
+{
+    ArrayList<String> List_Of_Array = new ArrayList<String>();
+    for(int i=0;i<10;i++)
+            List_Of_Array.add(i+"");
+    if(List_Of_Array.contains("5"))
+        List_Of_Array.remove("3");
+    System.out.println(List_Of_Array);
+}
+}

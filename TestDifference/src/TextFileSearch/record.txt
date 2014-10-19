@@ -1,0 +1,8 @@
+Here is the studentRecord.txt:
+
+1 A 90 PASS
+2 B 30 FAIL
+3 C 80 PASS
+4 D 99 PASS
+5 E 85 PASS
+6 F 25 FAIL

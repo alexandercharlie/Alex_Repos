@@ -1,0 +1,5 @@
+InheritanceTest.Woman
+InheritanceTest.Child
+InheritanceTest.Human
+InheritanceTest.Man
+InheritanceTest.God
